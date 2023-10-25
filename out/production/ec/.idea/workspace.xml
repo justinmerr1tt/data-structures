@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e126f6f-d640-4e91-8da1-f9e2470d4c25" name="Changes" comment="">
+    <list default="true" id="6e126f6f-d640-4e91-8da1-f9e2470d4c25" name="Changes" comment="h">
       <change beforePath="$PROJECT_DIR$/EC/EC.java" beforeDir="false" afterPath="$PROJECT_DIR$/EC/EC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ec/EC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ec/EC.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +54,21 @@
       <updated>1697504983426</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="h" />
+    <option name="LAST_COMMIT_MESSAGE" value="h" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
