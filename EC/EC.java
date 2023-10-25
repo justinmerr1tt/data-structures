@@ -11,41 +11,46 @@ public class EC {
 
         int[] copy = Arrays.copyOf(codeArr, codeArr.length);
         outerloop:
-            for (int p = 0; p < 100; p++) {
-                for (int t = 0; t < 100; t++) {
-                    System.arraycopy(copy, 0, codeArr, 0, copy.length);
-                    codeArr[1] = p;
-                    codeArr[2] = t;
+        for (int p = 0; p < 100; p++) {
+            for (int t = 0; t < 100; t++) {
+                System.arraycopy(copy, 0, codeArr, 0, copy.length);
+                codeArr[1] = p;
+                codeArr[2] = t;
 
-                    int i = 0;
-                    while (i < codeArr.length) {
-                        if (codeArr[i] == 1) {
-                            add(codeArr, i);
-                            i += 4;
-                        } else if (codeArr[i] == 2) {
-                            mult(codeArr, i);
-                            i += 4;
-                        } else if (codeArr[i] == 99) {
-                            break;
-                        } else
-                            i++;
-                    }
-
-                    if (codeArr[0] == 19690720) {
-                        System.out.println("Found combination: " + p + ", " + t);
-                        break outerloop;
-                    }
-
-                    String newOp = "";
-                    for (int j = 0; j < codeArr.length - 1; j++) {
-                        newOp += codeArr[j] + ",";
-                    }
-                    newOp += codeArr[codeArr.length - 1];
-                    System.out.println(newOp);
+                int i = 0;
+                while (i < codeArr.length) {
+                    if (codeArr[i] == 1) {
+                        add(codeArr, i);
+                        i += 4;
+                    } else if (codeArr[i] == 2) {
+                        mult(codeArr, i);
+                        i += 4;
+                    } else if (codeArr[i] == 3) {
+                        store(codeArr, i, -2);
+                        i += 2;
+                    } else if (codeArr[i] == 4)
+                        output(codeArr, i);
+                    else if (codeArr[i] == 99) {
+                        break;
+                    } else
+                        i++;
                 }
 
+                if (codeArr[0] == 19690720) {
+                    System.out.println("Found combination: " + p + ", " + t);
+                    break outerloop;
+                }
 
+                String newOp = "";
+                for (int j = 0; j < codeArr.length - 1; j++) {
+                    newOp += codeArr[j] + ",";
+                }
+                newOp += codeArr[codeArr.length - 1];
+                System.out.println(newOp);
             }
+
+
+        }
 
         String newOp = "";
         for (int j = 0; j < codeArr.length - 1; j++) {
@@ -56,15 +61,24 @@ public class EC {
 
     }
 
-        public static void add ( int[] codeArr, int i){
-            if (i + 3 < codeArr.length && codeArr[i+3] < codeArr.length)
+    public static void add(int[] codeArr, int i) {
+        if (i + 3 < codeArr.length && codeArr[i + 3] < codeArr.length)
             codeArr[codeArr[i + 3]] = codeArr[codeArr[i + 1]] + codeArr[codeArr[i + 2]];
-        }
-
-        public static void mult ( int[] codeArr, int i){
-            if (i + 3 < codeArr.length && codeArr[i+3] < codeArr.length) {
-                codeArr[codeArr[i + 3]] = codeArr[codeArr[i + 1]] * codeArr[codeArr[i + 2]];
-            }
-        }
-
     }
+
+    public static void mult(int[] codeArr, int i) {
+        if (i + 3 < codeArr.length && codeArr[i + 3] < codeArr.length) {
+            codeArr[codeArr[i + 3]] = codeArr[codeArr[i + 1]] * codeArr[codeArr[i + 2]];
+        }
+    }
+
+    public static void store(int[] codeArr, int i, int in) {
+        if(i + 1 < codeArr.length && codeArr[i+1] < codeArr.length)
+            codeArr[codeArr[i+1]] = in;
+    }
+
+    public static void output(int[] codeArr, int i) {
+        if(i + 1 < codeArr.length && codeArr[i+1] < codeArr.length)
+            System.out.println(codeArr[codeArr[i+1]]);
+    }
+}
