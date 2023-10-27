@@ -20,20 +20,20 @@ public class EC {
 
                 int i = 0;
                 while (i < codeArr.length) {
-                    if (codeArr[i] == 1) {
+                    if (codeArr[i]%100 == 1) {
                         add(codeArr, i);
                         i += 4;
-                    } else if (codeArr[i] == 2) {
+                    } else if (codeArr[i]%100 == 2) {
                         mult(codeArr, i);
                         i += 4;
-                    } else if (codeArr[i] == 3) {
+                    } else if (codeArr[i]%100 == 3) {
                         store(codeArr, i, input);
                         i += 2;
-                    } else if (codeArr[i] == 4) {
+                    } else if (codeArr[i]%100 == 4) {
                         output(codeArr, i);
                         i += 2;
                     }
-                    else if (codeArr[i] == 99) {
+                    else if (codeArr[i]%100 == 99) {
                         break;
                     } else
                         i++;
@@ -65,61 +65,57 @@ public class EC {
     }
 
     public static void add(int[] codeArr, int i) {
-        int hunD, thouD, tenthouD;
+        int hunD, thouD, tenthouD, p1, p2;
         if (i + 3 < codeArr.length && codeArr[i + 3] < codeArr.length) {
             hunD = (int) ((codeArr[i] / 100) % 10);
             thouD = (int) ((codeArr[i] / 1000) % 10);
 
-            if (hunD == 0)
-                hunD = codeArr[codeArr[i + 1]];
-            if (thouD == 0)
-                thouD = codeArr[codeArr[i + 2]];
-            codeArr[codeArr[i+3]] = hunD + thouD;
+            p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : codeArr[i + 1];
+            p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : codeArr[i + 2];
+
+
+            codeArr[codeArr[i+3]] = p1 + p2;
         }
     }
 
     public static void mult(int[] codeArr, int i) {
-        int hunD, thouD, tenthouD;
+        int hunD, thouD, tenthouD,  p1, p2;
         if (i + 3 < codeArr.length && codeArr[i + 3] < codeArr.length) {
             hunD = (int) ((codeArr[i] / 100) % 10);
             thouD = (int) ((codeArr[i] / 1000) % 10);
 
-            if (hunD == 0)
-                hunD = codeArr[codeArr[i + 1]];
-            if (thouD == 0)
-                thouD = codeArr[codeArr[i + 2]];
-            codeArr[codeArr[i+3]] = hunD * thouD;
+            p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : codeArr[i + 1];
+            p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : codeArr[i + 2];
+
+            codeArr[codeArr[i+3]] = p1 * p2;
         }
     }
 
     public static void store(int[] codeArr, int i, int in) {
-        int hunD, thouD, tenthouD;
-        if(i + 1 < codeArr.length && codeArr[i+1] < codeArr.length) {
+        int hunD;
+        if(i + 1 < codeArr.length) {
             hunD = (int) ((codeArr[i] / 100) % 10);
-            thouD = (int) ((codeArr[i] / 1000) % 10);
-
-            if (hunD == 0)
-                hunD = codeArr[codeArr[i + 1]];
-//            if (thouD == 0)
-//                thouD = codeArr[codeArr[i + 2]];
-//            if (tenthouD == 0)
-//                tenthouD = codeArr[codeArr[i + 3]];
-//            tenthouD = hunD + thouD;
-            codeArr[i+1] = in;
+            if (hunD == 0) {
+                // if in position mode, retrieve the position and set the value there
+                if(codeArr[i + 1] < codeArr.length) {
+                    codeArr[codeArr[i+1]] = in;
+                }
+            } else if (hunD == 1) {
+                throw new RuntimeException("Unsupported Opcode 103");
+            }
         }
-
     }
 
+
     public static void output(int[] codeArr, int i) {
-        int hunD, thouD, tenthouD;
+        int hunD, thouD, tenthouD, p1;
         hunD = (int) ((codeArr[i] / 100) % 10);
         thouD = (int) ((codeArr[i] / 1000) % 10);
         tenthouD = (int) ((codeArr[i] / 10000) % 10);
 
-        if (hunD == 0)
-            hunD = codeArr[codeArr[i + 1]];
+        p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : codeArr[i + 1];
 
         if(i + 1 < codeArr.length && codeArr[i+1] < codeArr.length)
-            System.out.println(hunD);
+            System.out.println(p1);
    }
 }
