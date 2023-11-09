@@ -32,6 +32,16 @@ public class EC {
                     } else if (codeArr[i]%100 == 4) {
                         output(codeArr, i);
                         i += 2;
+                    } else if(codeArr[i]%100 == 5) {
+                        i = jumpTrue(codeArr, i);
+                    } else if(codeArr[i]%100 == 6) {
+                        i = jumpFalse(codeArr, i);
+                    } else if (codeArr[i]%100 == 7) {
+                        lessThan(codeArr, i);
+                        i += 4;
+                    } else if(codeArr[i]%100 == 8) {
+                        equals(codeArr, i);
+                        i += 4;
                     }
                     else if (codeArr[i]%100 == 99) {
                         break;
@@ -118,4 +128,75 @@ public class EC {
         if(i + 1 < codeArr.length && codeArr[i+1] < codeArr.length)
             System.out.println(p1);
    }
+
+    public static int jumpTrue(int[] codeArr, int i) {
+        int hunD, thouD, tenthouD;
+        hunD = (int) ((codeArr[i] / 100) % 10);
+        thouD = (int) ((codeArr[i] / 1000) % 10);
+
+        if (hunD == 0)
+            hunD = codeArr[codeArr[i + 1]];
+        if (thouD == 0)
+            thouD = codeArr[codeArr[i + 2]];
+
+        if(hunD != 0) {
+            return thouD;
+        }
+        return i+3;
+    }
+
+    public static int jumpFalse(int[] codeArr, int i) {
+        int hunD, thouD, tenthouD;
+        hunD = (int) ((codeArr[i] / 100) % 10);
+        thouD = (int) ((codeArr[i] / 1000) % 10);
+
+        if (hunD == 0)
+            hunD = codeArr[codeArr[i + 1]];
+        if (thouD == 0)
+            thouD = codeArr[codeArr[i + 2]];
+
+        if(hunD == 0) {
+            return thouD;
+        }
+        return i+3;
+    }
+
+    public static void lessThan(int[] codeArr, int i) {
+        int hunD, thouD, tenThouD;
+        hunD = (int) ((codeArr[i] / 100) % 10);
+        thouD = (int) ((codeArr[i] / 1000) % 10);
+        tenThouD = (int) ((codeArr[i] / 10000) % 10);
+
+        if (hunD == 0)
+            hunD = codeArr[codeArr[i + 1]];
+        if (thouD == 0)
+            thouD = codeArr[codeArr[i + 2]];
+        if (tenThouD == 0)
+            tenThouD = codeArr[codeArr[i + 3]];
+
+        if(hunD < thouD) {
+            codeArr[i+3] = thouD;
+        }
+        else codeArr[i+3] = 0;
+    }
+
+    public static void equals(int[] codeArr, int i) {
+        int hunD, thouD, tenThouD;
+        if (i + 3 < codeArr.length && codeArr[i + 3] < codeArr.length) {
+            hunD = (int) ((codeArr[i] / 100) % 10);
+            thouD = (int) ((codeArr[i] / 1000) % 10);
+            tenThouD = (int) ((codeArr[i] / 10000) % 10);
+
+            if (hunD == 0)
+                hunD = codeArr[codeArr[i + 1]];
+            if (thouD == 0)
+                thouD = codeArr[codeArr[i + 2]];
+            if (tenThouD == 0)
+                tenThouD = codeArr[codeArr[i + 3]];
+
+            if (hunD == thouD) {
+                codeArr[i + 3] = thouD;
+            } else codeArr[i + 3] = 0;
+        }
+    }
 }
