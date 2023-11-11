@@ -10,17 +10,24 @@ public class EC {
         for (int j = 0; j < opCodeArray.length; j++) {
             codeArr[j] = Integer.parseInt(opCodeArray[j].trim());
         }
-
-        int[] copy = Arrays.copyOf(codeArr, codeArr.length);
+        //int[] copy = Arrays.copyOf(codeArr, codeArr.length);
        /* outerloop:
         for (int p = 0; p < 100; p++)
             for (int t = 0; t < 100; t++) {*/
-                System.arraycopy(copy, 0, codeArr, 0, copy.length);
-//                codeArr[1] = p;
-//                codeArr[2] = t;
+                //System.arraycopy(copy, 0, codeArr, 0, copy.length);
+                //codeArr[1] = 12;
+                //codeArr[2] = 2;
 
                 int i = 0;
                 while (i < codeArr.length) {
+
+                    if(i+4+relBase > codeArr.length) {
+                        int[]newCodeArr = new int[codeArr.length + i+4+relBase];
+
+                        System.arraycopy(codeArr, 0, newCodeArr, 0, codeArr.length);
+                        codeArr = newCodeArr;
+                    }
+
                     if (codeArr[i]%100 == 1) {
                         add(codeArr, i);
                         i += 4;
@@ -51,31 +58,15 @@ public class EC {
                         break;
                     } else
                         i++;
+
+                    //System.out.println("test");
                 }
 
 //                if (codeArr[0] == 19690720) {
 //                    System.out.println("Found combination: " + p + ", " + t);
 //                    break outerloop;
 //                }
-
-                String newOp = "";
-                for (int j = 0; j < codeArr.length - 1; j++) {
-                    newOp += codeArr[j] + ",";
-                }
-                newOp += codeArr[codeArr.length - 1];
-                System.out.println(newOp);
-//            }
-//
-//
-//        }
-
-        newOp = "";
-        for (int j = 0; j < codeArr.length - 1; j++) {
-            newOp += codeArr[j] + ",";
-        }
-        newOp += codeArr[codeArr.length - 1];
-//        System.out.println(newOp);
-
+System.out.println(codeArr[0]);
     }
 
     public static void add(int[] codeArr, int i) {
@@ -84,8 +75,8 @@ public class EC {
             thouD = (int) ((codeArr[i] / 1000) % 10);
             tenThouD = (int) ((codeArr[i] / 10000) % 10);
 
-            p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1+relBase]];
-            p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2+relBase]];
+            p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
+            p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
 
             if(tenThouD == 1)
                 throw new RuntimeException("no immediate mode for add 3");
@@ -101,8 +92,8 @@ public class EC {
             thouD = (int) ((codeArr[i] / 1000) % 10);
             tenThouD = (int) ((codeArr[i] / 10000) % 10);
 
-            p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1+relBase]];
-            p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2+relBase]];
+            p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
+            p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
 
             if(tenThouD == 1)
                 throw new RuntimeException("no immediate mode for mult 3");
@@ -119,7 +110,7 @@ public class EC {
                 // if in position mode, retrieve the position and set the value there
                 codeArr[codeArr[i+1]] = in;
             } if(hunD == 2) {
-                codeArr[codeArr[i+1+relBase]] = in;
+                codeArr[codeArr[i+1]+relBase] = in;
             } else if (hunD == 1) {
                 throw new RuntimeException("Unsupported Opcode 103");
             }
@@ -132,10 +123,9 @@ public class EC {
         thouD = (int) ((codeArr[i] / 1000) % 10);
         tenthouD = (int) ((codeArr[i] / 10000) % 10);
 
-        p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (thouD == 1) ? codeArr[i + 1] : codeArr[codeArr[i + 1 +relBase]];
+        p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (thouD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
 
-        if(i + 1 < codeArr.length && codeArr[i+1] < codeArr.length)
-            System.out.println(p1);
+        System.out.println(p1);
    }
 
     public static int jumpTrue(int[] codeArr, int i) {
@@ -143,11 +133,11 @@ public class EC {
         hunD = (int) ((codeArr[i] / 100) % 10);
         thouD = (int) ((codeArr[i] / 1000) % 10);
 
-        p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1+relBase]];
-        p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2+relBase]];
+        p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
+        p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
 
-        if(hunD != 0) {
-            return thouD;
+        if(p1 != 0) {
+            return p2;
         }
         return i+3;
     }
@@ -157,11 +147,11 @@ public class EC {
         hunD = (int) ((codeArr[i] / 100) % 10);
         thouD = (int) ((codeArr[i] / 1000) % 10);
 
-        p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1+relBase]];
-        p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2+relBase]];
+        p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
+        p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
 
-        if(hunD == 0) {
-            return thouD;
+        if(p1 == 0) {
+            return p2;
         }
         return i+3;
     }
@@ -172,14 +162,21 @@ public class EC {
         thouD = (int) ((codeArr[i] / 1000) % 10);
         tenThouD = (int) ((codeArr[i] / 10000) % 10);
 
-        p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1+relBase]];
-        p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2+relBase]];
-        p3 = (tenThouD == 0) ? codeArr[codeArr[i + 3]] : (tenThouD == 1) ? codeArr[i + 3] : codeArr[codeArr[i+3+relBase]];
+        p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
+        p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
+        p3 = (tenThouD == 0) ? codeArr[codeArr[i + 3]] : (tenThouD == 1) ? codeArr[i + 3] : codeArr[codeArr[i+3]+relBase];
 
-        if(hunD < thouD) {
-            codeArr[i+3] = thouD;
+        if(codeArr.length < p3) {
+            int[]newCodeArr = new int[codeArr.length + p3];
+
+            System.arraycopy(codeArr, 0, newCodeArr, 0, codeArr.length);
+            codeArr = newCodeArr;
         }
-        else codeArr[i+3] = 0;
+
+        if(p1 < p2) {
+            codeArr[p3] = 1;
+        }
+        else codeArr[p3] = 0;
     }
 
     public static void equals(int[] codeArr, int i) {
@@ -189,13 +186,13 @@ public class EC {
             thouD = (int) ((codeArr[i] / 1000) % 10);
             tenThouD = (int) ((codeArr[i] / 10000) % 10);
 
-            p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1+relBase]];
-            p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2+relBase]];
-            p3 = (tenThouD == 0) ? codeArr[codeArr[i + 3]] : (tenThouD == 1) ? codeArr[i + 3] : codeArr[codeArr[i+3+relBase]];
+            p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
+            p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
+            p3 = (tenThouD == 0) ? codeArr[codeArr[i + 3]] : (tenThouD == 1) ? codeArr[i + 3] : codeArr[codeArr[i+3]+relBase];
 
-            if (hunD == thouD) {
-                codeArr[i + 3] = thouD;
-            } else codeArr[i + 3] = 0;
+            if (p1 == p2) {
+                codeArr[p3] = 1;
+            } else codeArr[p3] = 0;
         }
     }
 
@@ -203,7 +200,7 @@ public class EC {
         int hunD, p1;
         hunD = (int) ((codeArr[i] / 100) % 10);
 
-        p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1+relBase]];
+        p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
         relBase += p1;
     }
 }

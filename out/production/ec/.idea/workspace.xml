@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e126f6f-d640-4e91-8da1-f9e2470d4c25" name="Changes" comment="h">
-      <change beforePath="$PROJECT_DIR$/EC/EC.java" beforeDir="false" afterPath="$PROJECT_DIR$/EC/EC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ec/EC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ec/EC.class" afterDir="false" />
-    </list>
+    <list default="true" id="6e126f6f-d640-4e91-8da1-f9e2470d4c25" name="Changes" comment="h" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +38,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+    &quot;git-widget-placeholder&quot;: &quot;not-main&quot;
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
