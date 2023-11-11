@@ -21,7 +21,8 @@ public class EC {
                 int i = 0;
                 while (i < codeArr.length) {
 
-                    if(i+4+relBase > codeArr.length) {
+                    // ensuring that any relative mode calls will not be out of bounds
+                    if(codeArr[i+3]+1+relBase > codeArr.length) {
                         int[]newCodeArr = new int[codeArr.length + i+4+relBase];
 
                         System.arraycopy(codeArr, 0, newCodeArr, 0, codeArr.length);
@@ -59,6 +60,7 @@ public class EC {
                     } else
                         i++;
 
+                    //my self-coded debugger:
                     //System.out.println("test");
                 }
 
@@ -70,11 +72,13 @@ System.out.println(codeArr[0]);
     }
 
     public static void add(int[] codeArr, int i) {
+        // determining numerical value for each parameter's mode
         int hunD, thouD, tenThouD, p1, p2, p3;
             hunD = (int) ((codeArr[i] / 100) % 10);
             thouD = (int) ((codeArr[i] / 1000) % 10);
             tenThouD = (int) ((codeArr[i] / 10000) % 10);
 
+            // setting value of parameter based on mode
             p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
             p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
 
@@ -86,12 +90,14 @@ System.out.println(codeArr[0]);
     }
 
     public static void mult(int[] codeArr, int i) {
+        // determining numerical value for each parameter's mode
         int hunD, thouD, tenThouD,  p1, p2, p3;
         if (i + 3 < codeArr.length && codeArr[i + 3] < codeArr.length) {
             hunD = (int) ((codeArr[i] / 100) % 10);
             thouD = (int) ((codeArr[i] / 1000) % 10);
             tenThouD = (int) ((codeArr[i] / 10000) % 10);
 
+            // setting value of parameter based on mode
             p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
             p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
 
@@ -105,6 +111,7 @@ System.out.println(codeArr[0]);
 
     public static void store(int[] codeArr, int i, int in) {
         int hunD;
+        // determining numerical value for each parameter's mode
             hunD = (int) ((codeArr[i] / 100) % 10);
             if (hunD == 0) {
                 // if in position mode, retrieve the position and set the value there
@@ -118,11 +125,13 @@ System.out.println(codeArr[0]);
 
 
     public static void output(int[] codeArr, int i) {
+        // determining numerical value for each parameter's mode
         int hunD, thouD, tenthouD, p1;
         hunD = (int) ((codeArr[i] / 100) % 10);
         thouD = (int) ((codeArr[i] / 1000) % 10);
         tenthouD = (int) ((codeArr[i] / 10000) % 10);
 
+        // setting parameter to correct value based on mode
         p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (thouD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
 
         System.out.println(p1);
@@ -130,9 +139,11 @@ System.out.println(codeArr[0]);
 
     public static int jumpTrue(int[] codeArr, int i) {
         int hunD, thouD, tenthouD, p1, p2;
+        // determining numerical value for each parameter's mode
         hunD = (int) ((codeArr[i] / 100) % 10);
         thouD = (int) ((codeArr[i] / 1000) % 10);
 
+        // setting parameters based on their mode
         p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
         p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
 
@@ -144,9 +155,11 @@ System.out.println(codeArr[0]);
 
     public static int jumpFalse(int[] codeArr, int i) {
         int hunD, thouD, tenthouD, p1, p2;
+        // determining numerical value for each parameter's mode
         hunD = (int) ((codeArr[i] / 100) % 10);
         thouD = (int) ((codeArr[i] / 1000) % 10);
 
+        // setting parameters based on their mode
         p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
         p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
 
@@ -158,14 +171,17 @@ System.out.println(codeArr[0]);
 
     public static void lessThan(int[] codeArr, int i) {
         int hunD, thouD, tenThouD, p1, p2, p3;
+        // determining numerical value for each parameter's mode
         hunD = (int) ((codeArr[i] / 100) % 10);
         thouD = (int) ((codeArr[i] / 1000) % 10);
         tenThouD = (int) ((codeArr[i] / 10000) % 10);
 
+        // setting parameters based on their mode
         p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
         p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
         p3 = (tenThouD == 0) ? codeArr[codeArr[i + 3]] : (tenThouD == 1) ? codeArr[i + 3] : codeArr[codeArr[i+3]+relBase];
 
+        // prevents index out of bounds when accesing codeArr[p3]
         if(codeArr.length < p3) {
             int[]newCodeArr = new int[codeArr.length + p3];
 
@@ -181,11 +197,12 @@ System.out.println(codeArr[0]);
 
     public static void equals(int[] codeArr, int i) {
         int hunD, thouD, tenThouD, p1, p2, p3;
-        if (i + 3 < codeArr.length && codeArr[i + 3] < codeArr.length) {
+        // determining numerical value for each parameter's mode
             hunD = (int) ((codeArr[i] / 100) % 10);
             thouD = (int) ((codeArr[i] / 1000) % 10);
             tenThouD = (int) ((codeArr[i] / 10000) % 10);
 
+            // setting parameters based on mode
             p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
             p2 = (thouD == 0) ? codeArr[codeArr[i + 2]] : (thouD == 1) ? codeArr[i + 2] : codeArr[codeArr[i+2]+relBase];
             p3 = (tenThouD == 0) ? codeArr[codeArr[i + 3]] : (tenThouD == 1) ? codeArr[i + 3] : codeArr[codeArr[i+3]+relBase];
@@ -193,13 +210,14 @@ System.out.println(codeArr[0]);
             if (p1 == p2) {
                 codeArr[p3] = 1;
             } else codeArr[p3] = 0;
-        }
     }
 
     public static void relBaseM(int[] codeArr, int i) {
         int hunD, p1;
+        // determining numerical value for parameters mode
         hunD = (int) ((codeArr[i] / 100) % 10);
 
+        // setting parameter based on mode
         p1 = (hunD == 0) ? codeArr[codeArr[i + 1]] : (hunD == 1) ? codeArr[i + 1] : codeArr[codeArr[i+1]+relBase];
         relBase += p1;
     }
