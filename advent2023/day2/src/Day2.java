@@ -1,44 +1,119 @@
+package advent2023.day2.src;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 
 public class Day2 {
 
+    private static Map<Integer, String> colors;
+    private static Map<Integer, Map<String, Integer>> outerMap;
     private static String in;
         public static void main(String[] args) {
+            outerMap = new HashMap<>();
+
+            colors = new HashMap<>();
+            colors.put(0, "red");
+            colors.put(1, "green");
+            colors.put(2, "blue");
 
             setInt();
+            //in = "Game 1: 1 green, 4 blue; 1 blue, 2 green, 1 red";
             declareInnerMap();
 
-            // Declaring the outer HashMap
-            Map<Integer, Map<String, Integer>> outerMap = new HashMap<>();
+            int maxRed = 12;
+            int maxGreen = 13;
+            int maxBlue = 14;
 
-            // Example of initializing the inner HashMap and putting it in the outer HashMap
-            Map<String, Integer> innerMap = new HashMap<>();
-            innerMap.put("red", 100);
-            innerMap.put("green", 200);
-            innerMap.put("blue", 200);
+            System.out.println(sumGames(maxRed,maxGreen,maxBlue));
 
-            // Associating the inner HashMap with an integer key in the outer HashMap
-            outerMap.put(1, innerMap);
-
-            // Example of accessing and manipulating the data
-            // Accessing the inner HashMap associated with key 1 in the outer HashMap
-            Map<String, Integer> retrievedMap = outerMap.get(1);
-
-            // Adding a new key-value pair to the inner HashMap
-            if (retrievedMap != null) {
-                retrievedMap.put("key3", 300);
-            }
-
-            // Printing the entire structure
             System.out.println(outerMap);
         }
 
-        static void declareInnerMap() {
-            String[] arrOfStr = str.split("@", 2);
+    public static int sumGames(int maxRed, int maxGreen, int maxBlue) {
 
-            for(int i = 0; i<)
-        }
+        Map<String, Integer> maxColors = new HashMap<>();
+        maxColors.put("red", maxRed);
+        maxColors.put("green", maxGreen);
+        maxColors.put("blue", maxBlue);
+
+            int sumIDs = 0;
+            for(int i = 1; i < outerMap.size()+1; i++) {
+                for(int c = 0; c < colors.size(); c++) {
+                    if(outerMap.get(i).get(colors.get(c)) > maxColors.get(colors.get(c))) {
+                        System.out.println("Game " + i + " invalid");
+                        sumIDs = sumIDs - i;
+                        break;
+                    }
+                }
+                sumIDs += i;
+            }
+            return sumIDs;
+    }
+
+
+    static void declareInnerMap() {
+            String[] arrOfStr = in.split("\n", -1);
+
+            for(int line = 0; line < arrOfStr.length; line++) {
+
+                Pattern pattern = Pattern.compile("Game (\\d+):");
+                Matcher matcher = pattern.matcher(arrOfStr[line]);
+                int gameNumber = -1;
+
+                if (matcher.find()) {
+                    gameNumber = Integer.parseInt(matcher.group(1));
+                }
+
+                Map<String, Integer> innerMap = new HashMap<>();
+                innerMap.put("red", -1);
+                innerMap.put("green", -1);
+                innerMap.put("blue", -1);
+                outerMap.put(gameNumber, innerMap);
+
+                //for(int curChar = 0; curChar < arrOfStr[line].length(); curChar++) {
+                    for(int cC = 0; cC < colors.size(); cC++) {
+                        String curColor = colors.get(cC);
+
+                        String thisLine = arrOfStr[line];
+                        //String intAndColor = "(\\d+) blue";
+                        String intAndColor = "(\\d+) " + curColor;
+                        //System.out.println("(\\d+) " + curColor);
+                        //System.out.println("(\\d+) " + curColor);
+
+                        Pattern regex = Pattern.compile(intAndColor);
+                        Matcher match = regex.matcher(thisLine);
+
+                        while (match.find()) {
+                            String capturedNumber = match.group(1);
+                            int number = Integer.parseInt(capturedNumber);
+                            //System.out.println("Captured number: " + number);
+                            if(innerMap.get(curColor) < number)
+                                innerMap.put(curColor, number);
+                        }
+
+
+                        /*if(curColor.length() + curChar < arrOfStr[line].length() && arrOfStr[line].substring(curChar, curChar+curColor.length()).equals(curColor)) {
+                            int curValue = (int) arrOfStr[line].charAt(curChar-2);
+
+
+                        }*/
+                        //colorValue = 0;
+                    }
+
+
+                  //  }
+                    }
+                }
+
+
+
+
+
+
+
 
         static void setInt() {
             in  = "Game 1: 1 green, 4 blue; 1 blue, 2 green, 1 red; 1 red, 1 green, 2 blue; 1 green, 1 red; 1 green; 1 green, 1 blue, 1 red\n" +
