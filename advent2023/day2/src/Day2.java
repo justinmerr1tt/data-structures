@@ -28,9 +28,35 @@ public class Day2 {
             int maxBlue = 14;
 
             System.out.println(sumGames(maxRed,maxGreen,maxBlue));
+            System.out.println(sumPower(maxRed,maxGreen,maxBlue));
 
             System.out.println(outerMap);
         }
+
+
+    public static int sumPower(int maxRed, int maxGreen, int maxBlue) {
+
+        Map<String, Integer> maxColors = new HashMap<>();
+        maxColors.put("red", -1);
+        maxColors.put("green", -1);
+        maxColors.put("blue", -1);
+
+        int powerSums = 0;
+        int curPower =  1;
+        for(int i = 1; i < outerMap.size()+1; i++) {
+            for(int c = 0; c < colors.size(); c++) {
+                if(outerMap.get(i).get(colors.get(c)) > maxColors.get(colors.get(c))) {
+                    maxColors.put(colors.get(c), outerMap.get(i).get(colors.get(c)));
+                }
+                curPower = maxColors.get("red") * maxColors.get("green") * maxColors.get("blue");
+            }
+            maxColors.put("red", -1);
+            maxColors.put("green", -1);
+            maxColors.put("blue", -1);
+            powerSums += curPower;
+        }
+        return powerSums;
+    }
 
     public static int sumGames(int maxRed, int maxGreen, int maxBlue) {
 
