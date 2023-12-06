@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a88f6c9d-da8d-4337-bf05-56f1ca74abb7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/advent2023/day2/src/Day2.java" beforeDir="false" afterPath="$PROJECT_DIR$/advent2023/day2/src/Day2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ec/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ec/EC.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ec/EC/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ec/EC/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="d54b530c-1ff3-478f-85ba-f47b634a8a93" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,29 +13,29 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="2Z6aupW1QhNnwwl6EoINUTzej3B" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2ZBMSKYM1GMYOTL0jSNpdaK1BeP" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/justinbarrmerritt/data-structures"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a88f6c9d-da8d-4337-bf05-56f1ca74abb7" name="Changes" comment="" />
-      <created>1701745209732</created>
+      <changelist id="d54b530c-1ff3-478f-85ba-f47b634a8a93" name="Changes" comment="" />
+      <created>1701891017425</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1701745209732</updated>
+      <updated>1701891017425</updated>
     </task>
     <servers />
   </component>
