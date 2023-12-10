@@ -10,27 +10,49 @@ public class Day3 {
     private static int sumEngine = 0;
 
     public static void main(String[] args) {
+        /*String test = "...122..................*.....*..........................919..509*..........&...@.........../...........................+.......*...........";
+        Pattern pattern = Pattern.compile("(\\d+)");
+        Matcher matcher = pattern.matcher(test);
+        System.out.println(matcher.find());*/
+
+
         setInput();
+       /* in =    "467..114..\n" +
+                "...*......\n" +
+                "..35..633.\n" +
+                "......#...\n" +
+                "617*......\n" +
+                ".....+.58.\n" +
+                "..592.....\n" +
+                "......755.\n" +
+                "...$.*....\n" +
+                ".664.598..";*/
         arrOfStr = in.split("\n", -1);
         findNumber();
         //isSpecial();
     }
-
     private static void findNumber() {
         for (int line = 0; line < arrOfStr.length; line++) {
 
-            Pattern pattern = Pattern.compile("\\d");
+            Pattern pattern = Pattern.compile("(\\d+)");
             Matcher matcher = pattern.matcher(arrOfStr[line]);
 
-            if (matcher.find()) {
+            //System.out.println(matcher.find());
+            int c = 0;
+            while (matcher.find()) {
                 int numStart = matcher.start();
                 int numEnd = matcher.end();
+                System.out.println(arrOfStr[line].substring(numStart,numEnd));
                 if (squareIsValid(numStart, numEnd, line)) {
-                    sumEngine += Integer.parseInt(matcher.group(1));
+                    c++;
+                    System.out.println("line: " + line);
+                        //System.out.println(arrOfStr[line] + " " + matcher + " " + matcher.group());
+                        //System.out.println(Integer.parseInt(matcher.group(1)));
+                        sumEngine += Integer.parseInt(matcher.group(1));
                 }
             }
         }
-        System.out.println(sumEngine);
+        System.out.println("answer" + sumEngine);
     }
 
     private static boolean squareIsValid(int numStart, int numEnd, int curLine) {
@@ -83,16 +105,19 @@ public class Day3 {
         }
 
         Pattern pattern = Pattern.compile("([^.\\d])");
+        System.out.println(squareAround);
 
         for (char curChar : squareAround) {
             String charAsString = String.valueOf(curChar);
             Matcher matcher = pattern.matcher(charAsString);
 
-            if (!matcher.find()) {
-                return false;
+            if (matcher.find()) {
+                System.out.println("bob" + arrOfStr[curLine].substring(numStart,numEnd));
+                return true;
             }
         }
-        return true;
+        System.out.println("FALSE");
+        return false;
     }
 
 
