@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d54b530c-1ff3-478f-85ba-f47b634a8a93" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/day3/src/Day3.java" afterDir="false" />
+    <list default="true" id="a88f6c9d-da8d-4337-bf05-56f1ca74abb7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/day3/src/Day3.java" beforeDir="false" afterPath="$PROJECT_DIR$/day3/src/Day3.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +19,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2ZBMSKYM1GMYOTL0jSNpdaK1BeP" />
+  <component name="ProjectId" id="2Z6aupW1QhNnwwl6EoINUTzej3B" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -30,18 +30,28 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/justinbarrmerritt/data-structures&quot;
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d54b530c-1ff3-478f-85ba-f47b634a8a93" name="Changes" comment="" />
-      <created>1701891017425</created>
+      <changelist id="a88f6c9d-da8d-4337-bf05-56f1ca74abb7" name="Changes" comment="" />
+      <created>1701745209732</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1701891017425</updated>
+      <updated>1701745209732</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StringIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

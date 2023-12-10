@@ -8,6 +8,7 @@ public class Day3 {
     private static String in;
     private static String[] arrOfStr;
     private static int sumEngine = 0;
+    private static int sumGearRatio = 0;
 
     public static void main(String[] args) {
         /*String test = "...122..................*.....*..........................919..509*..........&...@.........../...........................+.......*...........";
@@ -17,7 +18,7 @@ public class Day3 {
 
 
         setInput();
-       /* in =    "467..114..\n" +
+        in =    "467..114..\n" +
                 "...*......\n" +
                 "..35..633.\n" +
                 "......#...\n" +
@@ -26,11 +27,92 @@ public class Day3 {
                 "..592.....\n" +
                 "......755.\n" +
                 "...$.*....\n" +
-                ".664.598..";*/
+                ".664.598..";
         arrOfStr = in.split("\n", -1);
         findNumber();
+        findGear();
         //isSpecial();
     }
+
+    private static void findGear() {
+        for (int line = 0; line < arrOfStr.length; line++) {
+
+            Pattern pattern = Pattern.compile("(\\*)");
+            Matcher matcher = pattern.matcher(arrOfStr[line]);
+
+            //System.out.println(matcher.find());
+            int c = 0;
+            while (matcher.find()) {
+                int starIndex = matcher.start();
+                if (starIsGear(starIndex, line)) {
+                    c++;
+                    System.out.println("line: " + line);
+                    //System.out.println(arrOfStr[line] + " " + matcher + " " + matcher.group());
+                    //System.out.println(Integer.parseInt(matcher.group(1)));
+                    //sumGearRatio += Integer.parseInt(matcher.group(1));
+                }
+            }
+        }
+        System.out.println("answer" + sumGearRatio);
+    }
+
+    private static boolean starIsGear(int numStart, int curLine) {
+        int numEnd = numStart+1;
+        ArrayList<Character> squareAround = new ArrayList<Character>();
+
+
+
+        if(numStart - 1 < 0)
+            squareAround.add(0, '0');
+        else
+            squareAround.add(0, arrOfStr[curLine].charAt(numStart - 1));
+
+        if(numEnd >= arrOfStr[curLine].length())
+            squareAround.add(1, '1');
+        else
+            squareAround.add(1, arrOfStr[curLine].charAt(numEnd));
+
+        if(numStart - 1 < 0 || curLine - 1 < 0)
+            squareAround.add(2, '2');
+        else
+            squareAround.add(2, arrOfStr[curLine - 1].charAt(numStart - 1));
+
+        if(numStart - 1 < 0 || curLine + 1 >= arrOfStr.length)
+            squareAround.add(3, '4');
+        else
+            squareAround.add(3, arrOfStr[curLine + 1].charAt(numStart - 1));
+
+        if (curLine - 1 < 0 || numEnd >= arrOfStr[curLine].length())
+            squareAround.add(4, '3');
+        else
+            squareAround.add(4, arrOfStr[curLine - 1].charAt(numEnd));
+
+        if (curLine + 1 >= arrOfStr.length || numEnd >= arrOfStr[curLine].length())
+            squareAround.add(5, '5');
+        else
+            squareAround.add(5, arrOfStr[curLine + 1].charAt(numEnd));
+
+
+        int countInt = 0;
+        int gearRatio = 1;
+        for (char curChar : squareAround) {
+            if(Character.isDigit(curChar)) {
+                countInt++;
+                gearRatio *= (int)curChar;
+            }
+
+        }
+        if(countInt == 2) {
+            sumGearRatio += gearRatio;
+            return true;
+        }
+        System.out.println("FALSE");
+        return false;
+    }
+
+
+
+
     private static void findNumber() {
         for (int line = 0; line < arrOfStr.length; line++) {
 
