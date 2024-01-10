@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a88f6c9d-da8d-4337-bf05-56f1ca74abb7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/advent2023/day6/Day6.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/advent2023/day4/Day4.java" beforeDir="false" afterPath="$PROJECT_DIR$/advent2023/day4/Day4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ec/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ec/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ec/advent2023/day4/Day4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ec/advent2023/day4/Day4.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +61,11 @@
           <properties class="java.lang.StringIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/advent2023/day4/Day4.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

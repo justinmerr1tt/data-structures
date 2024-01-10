@@ -8,11 +8,15 @@ public class Day4 {
 
     private static HashMap<Integer, ArrayList<Integer>> gameSolutions = new HashMap<>();
     private static String[] arrOfStr;
+    private static  ArrayList<String> strList = new ArrayList<>();
     private static String in;
     public static void main(String[] args) {
         setInput();
-        in = "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53";
+        //in = "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53\n" + "Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19";
         arrOfStr = in.split("\n", -1);
+        for(String line : arrOfStr) {
+            strList.add(line);
+        }
         generateMap();
         findSolutions();
 
@@ -23,10 +27,11 @@ public class Day4 {
     private static void findSolutions() {
         int numRight = 0;
         int sumPoints = 0;
-        for (int line = 0; line < arrOfStr.length; line++) {
+        for (int line = 0; line < strList.size(); line++) {
+            numRight=0;
             int curPoints = 0;
             Pattern pattern = Pattern.compile("(\\d+)");
-            Matcher matcher = pattern.matcher(arrOfStr[line].substring(arrOfStr[line].indexOf(":"), arrOfStr[line].indexOf("|")));
+            Matcher matcher = pattern.matcher(strList.get(line).substring(strList.get(line).indexOf("|")));
 
             //System.out.println(matcher.find());
             int c = 0;
@@ -39,19 +44,22 @@ public class Day4 {
                         break;
                     }
                 }
+
                 }
-            curPoints = fibonacci(numRight);
-            sumPoints += curPoints;
+            sumPoints += Math.pow(2, numRight-1);
+            for(int i = numRight; i > 0; i--) {
+
+            }
             }
         System.out.println("answer" + sumPoints);
     }
 
     private static void generateMap() {
-        for (int line = 0; line < arrOfStr.length; line++) {
-            String curLineAnswers = arrOfStr[line].substring(arrOfStr[line].indexOf(":"), arrOfStr[line].indexOf("|"));
+        for (int line = 0; line < strList.size(); line++) {
+            String curLineAnswers = strList.get(line).substring(strList.get(line).indexOf(":"), strList.get(line).indexOf("|"));
 
             Pattern pattern = Pattern.compile("(\\d+)");
-            Matcher matcher = pattern.matcher(arrOfStr[line]);
+            Matcher matcher = pattern.matcher(strList.get(line).substring(strList.get(line).indexOf(":"), strList.get(line).indexOf("|")));
             ArrayList<Integer> solutions = new ArrayList<>();
 
             //System.out.println(matcher.find());
@@ -63,18 +71,7 @@ public class Day4 {
         }
     }
 
-        public static int fibonacci(int n) {
-            if (n <= 1) {
-                return n;
-            }
-            int fib = 0, prev1 = 1, prev2 = 0;
-            for (int i = 2; i <= n; i++) {
-                fib = prev1 + prev2;
-                prev2 = prev1;
-                prev1 = fib;
-            }
-            return fib;
-        }
+
 
     private static void setInput() {
         in =    "Card   1: 52 74  9  7 90 77 55 97 31 66 | 29 80 38 92 54 28 36 17 81 19 96 24 64 90 69 86 37  1 94 31 13 84 23 68 58\n" +
