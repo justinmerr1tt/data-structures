@@ -7,13 +7,23 @@ public class Day9 {
     public static void main(String[] args) {
         // Create an array where each element is a HashMap
         setInput();
+        in =    "0 3 6 9 12 15\n" +
+                "1 3 6 10 15 21\n" +
+                "10 13 16 21 30 45";
         arrOfStr = in.split("\n", -1);
-        HashMap<Integer, Integer>[] arr = new HashMap[200];
+        HashMap<Integer, HashMap<Integer, Integer>>[] bigArray = new HashMap[200];
+        HashMap<Integer, Integer> innerMap;
 
         // Initialize each element of the array
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = new HashMap<Integer, Integer>();
+        for (int i = 0; i < bigArray.length; i++) {
+            bigArray[i] = new HashMap<Integer, HashMap<Integer, Integer>>();
+            innerMap = new HashMap<Integer, Integer>();
+            for(int line = 0; line < arrOfStr.length; line++) {
+                //innerMap.put(line, arrOfStr[line]);
+            }
+
         }
+
     }
 
     static void setInput() {
