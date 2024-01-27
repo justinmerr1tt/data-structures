@@ -43,8 +43,20 @@ public class Day7 {
                 "78TQ2 466\n" +
                 "27J27 229";*/
 
-        in = "33322 215\n" +
-                "33345 13";
+        in = "AAAAA 2\n" +
+                "22222 3\n" +
+                "AAAAK 5\n" +
+                "22223 7\n" +
+                "AAAKK 11\n" +
+                "22233 13\n" +
+                "AAAKQ 17\n" +
+                "22234 19\n" +
+                "AAKKQ 23\n" +
+                "22334 29\n" +
+                "AAKQJ 31\n" +
+                "22345 37\n" +
+                "AKQJT 41\n" +
+                "23456 43";
 
         arrOfStr = in.split("\n", -1);
 
@@ -84,7 +96,7 @@ public class Day7 {
             answer += (arrOfStr.length-(i)) * grandArray.get(i).get(1);
             System.out.println(answer);
         }
-
+        System.out.println(answer);
         //System.out.println(compareValues(3,4));
         //System.out.println(answer);
     }
