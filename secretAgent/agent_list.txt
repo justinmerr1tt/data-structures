@@ -1,4 +1,4 @@
-StAndrewsLodgeLoyalNine NorthCaucusLongRoomClubTeaParty BostonCommitteeLondonEnemies
+StAndrewsLodge LoyalNine NorthCaucus LongRoomClub TeaParty BostonCommittee LondonEnemies
 Adams.John 0 0 1 1 0 0 0
 Adams.Samuel 0 0 1 1 0 1 1
 Allen.Dr 0 0 1 0 0 0 0
