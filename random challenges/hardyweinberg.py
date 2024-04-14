@@ -66,7 +66,7 @@ for p in range(num_trials):
 
     # print(chi_square)
     
-    if chi_square > 5.99:
+    if chi_square > 3.84:
         #print("REJECT")
         z += 1
 
