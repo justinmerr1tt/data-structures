@@ -4,8 +4,8 @@ gen1_p = 0.37
 gen1_q = 1 - gen1_p
 
 #pop size
-n = 100
-num_trials = 1000
+n = 20
+num_trials = 100000
 
 for p in range(num_trials):
     pp_obs = 0
@@ -66,7 +66,7 @@ for p in range(num_trials):
 
     # print(chi_square)
     
-    if chi_square > 5.99:
+    if chi_square > 3.84:
         #print("REJECT")
         z += 1
 
