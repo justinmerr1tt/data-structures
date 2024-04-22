@@ -1,0 +1,22 @@
+location1,location2,steps
+"""peak performance center""","""pavilion""",130
+"""peak performance center""","""ctl""",90
+"""peak performance center""","""science office""",30
+"""peak performance center""","""grab n go""",60
+"""grab n go""","""main bridge""",64
+"""grab n go""","""innovation building""",120
+"""grab n go""","""boardroom""",70
+"""main bridge""","""bio room""",51
+"""bio room""","""boardroom""",72
+"""bio room""","""science office""",12
+"""science office""","""tyrones office""",8
+"""science office""","""innovation building""",20
+"""science office""","""field""",150
+"""tyrones office""","""pavilion""",170
+"""tyrones office""","""labyrinth""",110
+"""tyrones office""","""field""",158
+"""ctl""","""innovation building""",39
+"""innovation building""","""boardroom""",89
+"""innovation building""","""pavilion""",120
+"""pavilion""","""field""",72
+"""field""","""labyrinth""",176
